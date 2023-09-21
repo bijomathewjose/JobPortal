@@ -1,4 +1,5 @@
 import AuthRoutes from "../Pages/Authenticated/Auth"
+import Job from "../Pages/Authenticated/Pages/Job"
 import Search from "../Pages/Authenticated/Pages/Search"
 
 
@@ -7,7 +8,7 @@ const PrivateRoutes={
     element:<AuthRoutes/>,
     children:[
         {path:'Home',element:<Search/>},
-        {path:'job/:id',element:</>}
+        {path:'Home/Job/:id',element:<Job/>},
     ]
 }
 

@@ -1,7 +1,6 @@
-import {  Navigate, Outlet, useNavigate } from 'react-router-dom'
+import {  Navigate, Outlet } from 'react-router-dom'
 import Style from './UserLogin.module.css'
 const UserLogin = () => {
-  const navigate=useNavigate()
   const isAuthenticated= JSON.parse(localStorage.getItem('isAuthenticated'))
   if(isAuthenticated ) return <Navigate to="/" replace/>
   return (

@@ -1,6 +1,6 @@
 import  { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
+import Style from './Login.module.css'
 const Login = () => {
     
     const [invalid,setInvalid]=useState(false)
@@ -22,22 +22,24 @@ const Login = () => {
       }
     }
   return (
-    <div>
-        <h1>Welcome back</h1>
-        <p>Please enter your details</p>
-        <form onSubmit={validate}>
-            <label>Email</label><br/>
-            <input type="text" id='email' name='email' placeholder='Enter your email'/>
-            <div>
-            <label>Password</label><br/>
-            <input type={viewPassword ? 'text' : 'password'}  name='password' placeholder='Enter your password'  />
-            <label htmlFor='checkbox' style={{userSelect:'none'}}>{viewPassword?'🔓':'🔒' } </label>
-            <input style={{display:'none'}}  type='checkbox' id='checkbox' onChange={(e)=>setViewPassword(e.target.checked)}/>
+    <div className={Style.container}>
+        <div>
+          <h1>Welcome back!</h1>
+          <p className={Style.Details}>Please enter your details</p>
+        </div>
+        <form className={Style.form} onSubmit={validate}>
+            <label htmlFor='email' className={Style.label}>Email</label>
+            <input className={`${Style.input}`} type="text" id='email' name='email' placeholder='Enter your email'/>
+            <label className={Style.label}>Password</label>
+            <div className={Style.password}>
+              <input className={`${Style.input}`} type={viewPassword ? 'text' : 'password'}  name='password' placeholder='Enter your password'  />
+              <label htmlFor='checkbox' className={Style.labelViewPassword}>{viewPassword?'🔓':'🔒' } </label>
+              <input  className={`${Style.input}`} type='checkbox' id='checkbox' onChange={(e)=>setViewPassword(e.target.checked)}/>
             </div>
-            <button type='submit'>Login</button>
+            <button className={Style.submit} type='submit'>Login</button>
         </form>
         {invalid && <p style={{color:'red'}}>Invalid Credentials</p>}
-        <p>{`Don't have an account? `}<Link to="/signup">Sign Up</Link></p>
+        <p className={`${Style.Details} ${Style.SignUp}`}>{`Don't have an account? `}<Link to="/signup" className={Style.SignUpLink}>Sign Up</Link></p>
     </div>
   )
 }

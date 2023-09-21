@@ -1,0 +1,80 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    gap: 10px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 270px;
+    flex: 1 1 auto;
+}
+h1{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+}
+.Details{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    
+}
+.input[type='checkbox']{
+    display: none;
+}
+.labelViewPassword{
+    user-select: none;
+}
+.SignUp{
+    justify-items: flex-end;
+    padding: 10px 0;
+    font-size: 12px;
+    justify-content: space-between;
+    font-weight: 400;
+}
+.SignUpLink{
+    all: unset;
+    box-sizing: border-box;
+    font-weight: 600;
+    cursor: pointer;
+    justify-tracks: flex-end;
+}
+.label{
+    font-size: 0.8rem;
+    font-weight: 500;
+    width: 100%;
+}
+.password{
+    display: flex;
+    width: 100%;
+    border-bottom:0.2px solid #00000041;
+    margin:0 0 10px 0;
+    justify-content: space-between;
+}
+.input{
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    padding:5px 10px;
+    border-bottom:0.2px solid #00000041;
+}
+
+.input[type='password']{
+    flex: 1 1 auto;
+    border-bottom: none;
+}
+.submit{
+    all: unset;
+    box-sizing: border-box;
+    width: 100%;
+    padding:12px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #f6f6f6;
+}

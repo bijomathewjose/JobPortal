@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
 import axios from 'axios';
+import { addJobs ,selectJob} from '../../../Redux/jobSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Job from './Job';
 
 const options = {
   method: 'POST',
@@ -15,16 +15,18 @@ const options = {
 
 
 const Search = () => {
-    const [showJob, setShowJob] = useState(false)
-    const [jobs,setJobs]=useState([])
-    const [job,setJob]=useState({})
+    const navigate=useNavigate()
+    const dispatch=useDispatch()
+    const jobs=useSelector(state=>state.jobReducer.jobs)
+    
     const validate=async (e)=>{
+        dispatch(selectJob({}))
         e.preventDefault()
         const searchKeyword=e.target.searchKeyword.value
         if(searchKeyword){
             try {
                 const response = await axios.request({...options,data:{title:searchKeyword,location:"India",rows:100}});
-                setJobs(response.data);
+                dispatch(addJobs(response.data));
             } catch (error) {
                 console.error(error);
             }
@@ -37,7 +39,6 @@ const Search = () => {
             <input type="text" id='searchKeyword'/>
             <button type='submit'>Search</button>
         </form>
-        {showJob && <Job close={()=>setShowJob(false)}  job={job} />}
         <div>
             {jobs.map((job)=>(
                 <div key={job.id}>
@@ -45,9 +46,13 @@ const Search = () => {
                     <p>Posted Time:{job.postedTime}</p>
                     <p>Company:{job.companyName}</p>
                     <p>Contract Type:{job.contractType}</p>
-                    <button onClick={()=>{setJob(job);setShowJob(true)}}>Apply</button>
+                    <button onClick={()=>{
+                        dispatch(selectJob(job))
+                        navigate(`Job/${job.id}`)
+                    }}>Apply</button>
                 </div>
             ))}
+            
         </div>
        
     </div>
