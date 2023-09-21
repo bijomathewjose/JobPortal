@@ -3,6 +3,7 @@ import { addJobs ,selectJob} from '../../../Redux/jobSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import Style from './Job.module.css';
 const options = {
   method: 'POST',
   url: 'https://linkedin-jobs-scraper-api.p.rapidapi.com/jobs',
@@ -33,26 +34,24 @@ const Search = () => {
         }
     }
   return (
-    <div>
-        <h2>Search</h2>
-        <form onSubmit={validate}>
+    <div className={Style.container}>
+        <h2>Search Jobs</h2>
+        <form onSubmit={validate} className={Style.form}>
             <input type="text" id='searchKeyword'/>
             <button type='submit'>Search</button>
         </form>
-        <div>
+        <div className={Style.jobList}>
             {jobs.map((job)=>(
-                <div key={job.id}>
+                <div className={Style.jobBox} key={job.id}>
                     <h2>{job.title}</h2>
-                    <p>Posted Time:{job.postedTime}</p>
-                    <p>Company:{job.companyName}</p>
-                    <p>Contract Type:{job.contractType}</p>
-                    <button onClick={()=>{
+                    <p><b>Contract Type:</b>{job.contractType}</p>
+                    <p><b>Posted Time:</b>{job.postedTime}</p>
+                    <button  onClick={()=>{
                         dispatch(selectJob(job))
                         navigate(`Job/${job.id}`)
                     }}>Apply</button>
                 </div>
             ))}
-            
         </div>
        
     </div>

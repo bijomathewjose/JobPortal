@@ -4,11 +4,12 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setApplicationForm } from '../../../Redux/jobSlice'
 import { Link } from 'react-router-dom'
+import Style from './JobSingle.module.css'
 const Job = () => {
     const [showModal, setShowModal] = useState(false)
     const job=useSelector(state=>state.jobReducer.selectedJob)
   return (
-    <div>
+    <div className={Style.job}>
         <h2>{job?.title}</h2>
         <p>Posted Time:{job?.postedTime}</p>
         <a href={job?.companyUrl}>Company:{job?.companyName}</a>
