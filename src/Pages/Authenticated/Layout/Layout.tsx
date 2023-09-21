@@ -10,8 +10,7 @@ const logout=()=>{
 }
   return (
     <div>
-        <Navbar/>
-        <div onClick={logout} style={{aspectRatio:'1',width:'fit-content',backgroundColor:'white',color:'black',textAlign:'center'}}>Log Out</div>
+        <div onClick={logout} style={{color:'white',textAlign:'center'}}>Log Out</div>
         <div><Outlet/></div>
     </div>
   )
