@@ -11,8 +11,8 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 270px;
     flex: 1 1 auto;
+    gap: 40px;
 }
 h1{
     text-align: center;
